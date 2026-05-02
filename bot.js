@@ -333,9 +333,9 @@ async function payTransfer(phone, plan, lang) {
   sess(phone).transferRef = ref;
   await db.query("INSERT INTO payments (phone,plan,amount_mad,method,reference) VALUES ($1,$2,$3,'transfer',$4)", [phone.replace(/[@c.us]/g,""), plan, amt, ref]);
   const t = {
-    ar: `🏦 *تحويل بنكي*\n\n🏛️ Attijariwafa Bank\nRIB: *007 780 0001234567890112*\n💰 المبلغ: *${amt} درهم*\n📝 المرجع: *${ref}*\n\nأرسل صورة الإيصال`,
-    fr: `🏦 *Virement bancaire*\n\n🏛️ Attijariwafa Bank\nRIB: *007 780 0001234567890112*\n💰 Montant: *${amt} MAD*\n📝 Référence: *${ref}*\n\nEnvoyez photo du reçu`,
-    en: `🏦 *Bank Transfer*\n\n🏛️ Attijariwafa Bank\nRIB: *007 780 0001234567890112*\n💰 Amount: *${amt} MAD*\n📝 Reference: *${ref}*\n\nSend receipt photo`,
+    ar: `🏦 *تحويل بنكي*\n\n🏛️ Attijariwafa Bank - كنيترة\n👤 الاسم: *M OUDILI ANASS*\nRIB: *007 330 0010509000302103 43*\nSWIFT: *BCMAMAMC*\n💰 المبلغ: *${amt} درهم*\n📝 المرجع: *${ref}*\n\nأرسل صورة الإيصال بعد التحويل`,
+    fr: `🏦 *Virement bancaire*\n\n🏛️ Attijariwafa Bank - Kénitra\n👤 Nom: *M OUDILI ANASS*\nRIB: *007 330 0010509000302103 43*\nSWIFT: *BCMAMAMC*\n💰 Montant: *${amt} MAD*\n📝 Référence: *${ref}*\n\nEnvoyez photo du reçu après virement`,
+    en: `🏦 *Bank Transfer*\n\n🏛️ Attijariwafa Bank - Kenitra\n👤 Name: *M OUDILI ANASS*\nRIB: *007 330 0010509000302103 43*\nSWIFT: *BCMAMAMC*\n💰 Amount: *${amt} MAD*\n📝 Reference: *${ref}*\n\nSend receipt photo after transfer`,
   };
   return t[lang] || t.fr;
 }
